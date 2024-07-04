@@ -45,8 +45,8 @@ const bookId = 3;
 async function readAllBooks() {
     try {
       const Book = await books.findAll();
-      console.log('AlleBooks:',Book.map(Book =>Book.toJSON()));
-      return Book;
+      console.table(Book.map(Book =>Book.toJSON()));
+    //   return Book;
     } catch (error) {
       console.error('Error reading Books:', error);
     }

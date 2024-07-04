@@ -112,8 +112,8 @@ function readAllAuthors() {
                     return [4 /*yield*/, authors_1.authors.findAll()];
                 case 1:
                     author = _a.sent();
-                    console.log('All authors:', author.map(function (author) { return author.toJSON(); }));
-                    return [2 /*return*/, authors_1.authors];
+                    console.table(author.map(function (author) { return author.toJSON(); }));
+                    return [3 /*break*/, 3];
                 case 2:
                     error_3 = _a.sent();
                     console.error('Error reading authors:', error_3);

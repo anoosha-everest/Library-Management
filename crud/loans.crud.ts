@@ -44,8 +44,8 @@ const loanId = 3;
 async function readAllLoans() {
     try {
       const loan = await loans.findAll();
-      console.log('All Loans:',loan.map(loan =>loan.toJSON()));
-      return loan;
+      console.table(loan.map(loan =>loan.toJSON()));
+    //   return loan;
     } catch (error) {
       console.error('Error reading Loans:', error);
     }

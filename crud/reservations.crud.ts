@@ -43,8 +43,8 @@ const reserveId = 3;
 async function readAllReservations() {
     try {
       const reserve = await reservations.findAll();
-      console.log('All Reservations:',reserve.map(reserve =>reserve.toJSON()));
-      return reserve;
+      console.table(reserve.map(reserve =>reserve.toJSON()));
+      // return reserve;
     } catch (error) {
       console.error('Error reading Reservations:', error);
     }

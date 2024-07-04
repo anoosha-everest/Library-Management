@@ -48,8 +48,8 @@ const authorId = 3;
 async function readAllAuthors() {
     try {
       const author = await authors.findAll();
-      console.log('All authors:', author.map(author => author.toJSON()));
-      return authors;
+      console.table(author.map(author => author.toJSON()));
+    //   return authors;
     } catch (error) {
       console.error('Error reading authors:', error);
     }

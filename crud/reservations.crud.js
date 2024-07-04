@@ -107,8 +107,8 @@ function readAllReservations() {
                     return [4 /*yield*/, reservations_1.reservations.findAll()];
                 case 1:
                     reserve = _a.sent();
-                    console.log('All Reservations:', reserve.map(function (reserve) { return reserve.toJSON(); }));
-                    return [2 /*return*/, reserve];
+                    console.table(reserve.map(function (reserve) { return reserve.toJSON(); }));
+                    return [3 /*break*/, 3];
                 case 2:
                     error_3 = _a.sent();
                     console.error('Error reading Reservations:', error_3);

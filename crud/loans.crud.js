@@ -108,8 +108,8 @@ function readAllLoans() {
                     return [4 /*yield*/, loans_1.loans.findAll()];
                 case 1:
                     loan = _a.sent();
-                    console.log('All Loans:', loan.map(function (loan) { return loan.toJSON(); }));
-                    return [2 /*return*/, loan];
+                    console.table(loan.map(function (loan) { return loan.toJSON(); }));
+                    return [3 /*break*/, 3];
                 case 2:
                     error_3 = _a.sent();
                     console.error('Error reading Loans:', error_3);

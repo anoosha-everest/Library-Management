@@ -109,8 +109,8 @@ function readAllBooks() {
                     return [4 /*yield*/, books_1.books.findAll()];
                 case 1:
                     Book = _a.sent();
-                    console.log('AlleBooks:', Book.map(function (Book) { return Book.toJSON(); }));
-                    return [2 /*return*/, Book];
+                    console.table(Book.map(function (Book) { return Book.toJSON(); }));
+                    return [3 /*break*/, 3];
                 case 2:
                     error_3 = _a.sent();
                     console.error('Error reading Books:', error_3);

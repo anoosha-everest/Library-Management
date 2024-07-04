@@ -108,8 +108,8 @@ function readAllMembers() {
                     return [4 /*yield*/, members_1.members.findAll()];
                 case 1:
                     member = _a.sent();
-                    console.log('All Members:', member.map(function (member) { return member.toJSON(); }));
-                    return [2 /*return*/, member];
+                    console.table(member.map(function (member) { return member.toJSON(); }));
+                    return [3 /*break*/, 3];
                 case 2:
                     error_3 = _a.sent();
                     console.error('Error reading member:', error_3);
