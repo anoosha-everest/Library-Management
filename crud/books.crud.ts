@@ -1,10 +1,5 @@
 import { books } from "../Models/books";
 
-//function to create a new data
-// function createData(data:any){
-//     consteBook =eBooks.create(data);
-//     console.log("createdeBook");
-// }
 async function createBook(data:any) {
     try {
         const Book = await books.create(data);

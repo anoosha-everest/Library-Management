@@ -36,81 +36,80 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteBookById = exports.updateBookById = exports.readAllBooks = exports.readBookById = exports.createBook = void 0;
-var books_1 = require("../Models/books");
-function createBook(data) {
+exports.deleteMemberById = exports.updateMemberById = exports.readAllMembers = exports.readMemberById = exports.createMember = void 0;
+var members_1 = require("../Models/members");
+function createMember(data) {
     return __awaiter(this, void 0, void 0, function () {
-        var Book, error_1;
+        var member, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, books_1.books.create(data)];
+                    return [4 /*yield*/, members_1.members.create(data)];
                 case 1:
-                    Book = _a.sent();
-                    console.log('created Book');
+                    member = _a.sent();
+                    console.log('created member');
                     return [3 /*break*/, 3];
                 case 2:
                     error_1 = _a.sent();
-                    console.error('Error in creating Book');
+                    console.error('Error in creating member');
                     throw error_1;
                 case 3: return [2 /*return*/];
             }
         });
     });
 }
-exports.createBook = createBook;
+exports.createMember = createMember;
 var data = {
-    title: 'All is Well',
-    authorId: 1,
-    genre: 'Philosophy',
-    isbn: '1011',
-    publication_year: 2050
+    name: 'Soumya',
+    address: 'Mancherial',
+    phone_number: '9995533218',
+    email: 'soumya@gmail.com'
 };
-createBook(data);
-function readBookById(id) {
+createMember(data);
+function readMemberById(id) {
     return __awaiter(this, void 0, void 0, function () {
-        var Book, error_2;
+        var member, error_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, books_1.books.findOne({ where: { id: id } })];
+                    return [4 /*yield*/, members_1.members.findOne({ where: { id: id } })];
                 case 1:
-                    Book = _a.sent();
-                    if (Book) {
-                        console.log('Book found:', Book.toJSON());
-                        return [2 /*return*/, Book];
+                    member = _a.sent();
+                    if (member) {
+                        console.log('member found:', member.toJSON());
+                        return [2 /*return*/, member];
                     }
                     else {
-                        console.log('Book not found');
+                        console.log('member not found');
                         return [2 /*return*/, null];
                     }
                     return [3 /*break*/, 3];
                 case 2:
                     error_2 = _a.sent();
-                    console.error('Error finding Book:', error_2);
+                    console.error('Error finding member:', error_2);
                     throw error_2;
                 case 3: return [2 /*return*/];
             }
         });
     });
 }
-exports.readBookById = readBookById;
-var bookId = 3;
-readBookById(bookId);
-function readAllBooks() {
+exports.readMemberById = readMemberById;
+var memId = 3;
+readMemberById(memId);
+function readAllMembers() {
     return __awaiter(this, void 0, void 0, function () {
-        var Book, error_3;
+        var member, error_3;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, books_1.books.findAll()];
+                    return [4 /*yield*/, members_1.members.findAll()];
                 case 1:
-                    Book = _a.sent();
-                    console.log('AlleBooks:', Book.map(function (Book) { return Book.toJSON(); }));
-                    return [2 /*return*/, Book];
+                    member = _a.sent();
+                    console.log('AlleBooks:', member.map(function (member) { return member.toJSON(); }));
+                    return [2 /*return*/, member];
                 case 2:
                     error_3 = _a.sent();
                     console.error('Error reading Books:', error_3);
@@ -120,60 +119,60 @@ function readAllBooks() {
         });
     });
 }
-exports.readAllBooks = readAllBooks;
-readAllBooks();
-function updateBookById(id, newData) {
+exports.readAllMembers = readAllMembers;
+readAllMembers();
+function updateMemberById(id, newData) {
     return __awaiter(this, void 0, void 0, function () {
         var error_4;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, books_1.books.update(newData, {
+                    return [4 /*yield*/, members_1.members.update(newData, {
                             where: { id: id }
                         })];
                 case 1:
                     _a.sent();
-                    console.log('Book updated successfully');
+                    console.log('member updated successfully');
                     return [3 /*break*/, 3];
                 case 2:
                     error_4 = _a.sent();
-                    console.error('Error updating Book:', error_4);
+                    console.error('Error updating member:', error_4);
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];
             }
         });
     });
 }
-exports.updateBookById = updateBookById;
+exports.updateMemberById = updateMemberById;
 var newData = {
-    title: 'Die with Your Die',
-    genre: 'Philosophy',
-    isbn: '1019'
+    name: 'Keerthi',
+    address: 'Medak',
+    email: 'keerthi@gmail.com'
 };
-updateBookById(4, newData);
-function deleteBookById(id) {
+updateMemberById(4, newData);
+function deleteMemberById(id) {
     return __awaiter(this, void 0, void 0, function () {
         var error_5;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, books_1.books.destroy({
+                    return [4 /*yield*/, members_1.members.destroy({
                             where: { id: id }
                         })];
                 case 1:
                     _a.sent();
-                    console.log('Book deleted successfully');
+                    console.log('member deleted successfully');
                     return [3 /*break*/, 3];
                 case 2:
                     error_5 = _a.sent();
-                    console.error('Error deleting Book:', error_5);
+                    console.error('Error deleting member:', error_5);
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];
             }
         });
     });
 }
-exports.deleteBookById = deleteBookById;
-deleteBookById(5);
+exports.deleteMemberById = deleteMemberById;
+deleteMemberById(5);
