@@ -70,7 +70,7 @@ var data = {
     birth_year: 2000,
     nationality: 'India'
 };
-createAuthor(data);
+// createAuthor(data);
 function readAuthorById(id) {
     return __awaiter(this, void 0, void 0, function () {
         var author, error_2;
@@ -101,7 +101,7 @@ function readAuthorById(id) {
 }
 exports.readAuthorById = readAuthorById;
 var authorId = 3;
-readAuthorById(authorId);
+// readAuthorById(authorId);
 function readAllAuthors() {
     return __awaiter(this, void 0, void 0, function () {
         var author, error_3;
@@ -124,7 +124,7 @@ function readAllAuthors() {
     });
 }
 exports.readAllAuthors = readAllAuthors;
-readAllAuthors();
+// readAllAuthors();
 function updateAuthorById(id, newData) {
     return __awaiter(this, void 0, void 0, function () {
         var error_4;
@@ -153,7 +153,7 @@ var newData = {
     name: 'Goldie',
     birth_year: 2029
 };
-updateAuthorById(4, newData);
+// updateAuthorById(4,newData);
 function deleteAuthorById(id) {
     return __awaiter(this, void 0, void 0, function () {
         var error_5;
@@ -178,4 +178,3 @@ function deleteAuthorById(id) {
     });
 }
 exports.deleteAuthorById = deleteAuthorById;
-deleteAuthorById(8);

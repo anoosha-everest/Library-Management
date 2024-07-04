@@ -65,7 +65,7 @@ var data = {
     member_id: 1,
     reservation_date: '2024-08-30'
 };
-createReservation(data);
+// createReservation(data);
 function readReservationById(id) {
     return __awaiter(this, void 0, void 0, function () {
         var reserve, error_2;
@@ -96,7 +96,7 @@ function readReservationById(id) {
 }
 exports.readReservationById = readReservationById;
 var reserveId = 3;
-readReservationById(reserveId);
+// readReservationById(reserveId);
 function readAllReservations() {
     return __awaiter(this, void 0, void 0, function () {
         var reserve, error_3;
@@ -119,7 +119,7 @@ function readAllReservations() {
     });
 }
 exports.readAllReservations = readAllReservations;
-readAllReservations();
+// readAllReservations();
 function updateReservationById(id, newData) {
     return __awaiter(this, void 0, void 0, function () {
         var error_4;
@@ -149,7 +149,7 @@ var newData = {
     member_id: 2,
     reservation_date: '2024-12-30'
 };
-updateReservationById(4, newData);
+// updateReservationById(4,newData);
 function deleteReservationById(id) {
     return __awaiter(this, void 0, void 0, function () {
         var error_5;
@@ -174,4 +174,3 @@ function deleteReservationById(id) {
     });
 }
 exports.deleteReservationById = deleteReservationById;
-deleteReservationById(5);

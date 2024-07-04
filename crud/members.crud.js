@@ -66,7 +66,7 @@ var data = {
     phone_number: '9995533218',
     email: 'soumya@gmail.com'
 };
-createMember(data);
+// createMember(data);
 function readMemberById(id) {
     return __awaiter(this, void 0, void 0, function () {
         var member, error_2;
@@ -97,7 +97,7 @@ function readMemberById(id) {
 }
 exports.readMemberById = readMemberById;
 var memId = 3;
-readMemberById(memId);
+// readMemberById(memId);
 function readAllMembers() {
     return __awaiter(this, void 0, void 0, function () {
         var member, error_3;
@@ -120,7 +120,7 @@ function readAllMembers() {
     });
 }
 exports.readAllMembers = readAllMembers;
-readAllMembers();
+// readAllMembers();
 function updateMemberById(id, newData) {
     return __awaiter(this, void 0, void 0, function () {
         var error_4;
@@ -150,7 +150,7 @@ var newData = {
     address: 'Medak',
     email: 'keerthi@gmail.com'
 };
-updateMemberById(4, newData);
+// updateMemberById(4,newData);
 function deleteMemberById(id) {
     return __awaiter(this, void 0, void 0, function () {
         var error_5;
@@ -175,4 +175,3 @@ function deleteMemberById(id) {
     });
 }
 exports.deleteMemberById = deleteMemberById;
-deleteMemberById(5);

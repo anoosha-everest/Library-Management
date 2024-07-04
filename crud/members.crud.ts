@@ -17,7 +17,7 @@ const data={
     phone_number:'9995533218',
     email:'soumya@gmail.com' 
 };
-createMember(data);
+// createMember(data);
 
 
 async function readMemberById(id:any) {
@@ -38,7 +38,7 @@ async function readMemberById(id:any) {
   
  
 const memId = 3; 
-readMemberById(memId);
+// readMemberById(memId);
 
 
 async function readAllMembers() {
@@ -52,7 +52,7 @@ async function readAllMembers() {
   }
   
 
-readAllMembers();
+// readAllMembers();
 
 async function updateMemberById(id:any, newData:any) {
     try {
@@ -69,7 +69,7 @@ const newData={
     address:'Medak',
     email:'keerthi@gmail.com' 
 }
-updateMemberById(4,newData);
+// updateMemberById(4,newData);
 
 async function deleteMemberById(id:any) {
     try {
@@ -82,6 +82,6 @@ async function deleteMemberById(id:any) {
     }
 }
 
-deleteMemberById(5);
+// deleteMemberById(5);
 
 export{createMember,readMemberById,readAllMembers,updateMemberById,deleteMemberById};

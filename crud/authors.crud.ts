@@ -21,7 +21,7 @@ const data={
     birth_year:2000,
     nationality:'India'
 };
-createAuthor(data);
+// createAuthor(data);
 
 
 async function readAuthorById(id:any) {
@@ -42,7 +42,7 @@ async function readAuthorById(id:any) {
   
  
 const authorId = 3; 
-readAuthorById(authorId);
+// readAuthorById(authorId);
 
 
 async function readAllAuthors() {
@@ -56,7 +56,7 @@ async function readAllAuthors() {
   }
   
 
-readAllAuthors();
+// readAllAuthors();
 
 async function updateAuthorById(id:any, newData:any) {
     try {
@@ -72,7 +72,7 @@ const newData={
     name: 'Goldie', 
     birth_year:2029
 }
-updateAuthorById(4,newData);
+// updateAuthorById(4,newData);
 async function deleteAuthorById(id:any) {
     try {
       await authors.destroy({
@@ -84,6 +84,6 @@ async function deleteAuthorById(id:any) {
     }
 }
 
-deleteAuthorById(8);
+// deleteAuthorById(8);
 
 export{createAuthor,readAuthorById,readAllAuthors,updateAuthorById,deleteAuthorById};

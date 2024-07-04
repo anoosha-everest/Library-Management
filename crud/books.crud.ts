@@ -18,7 +18,7 @@ const data={
     isbn:'1011',
     publication_year:2050
 };
-createBook(data);
+// createBook(data);
 
 
 async function readBookById(id:any) {
@@ -39,7 +39,7 @@ async function readBookById(id:any) {
   
  
 const bookId = 3; 
-readBookById(bookId);
+// readBookById(bookId);
 
 
 async function readAllBooks() {
@@ -53,7 +53,7 @@ async function readAllBooks() {
   }
   
 
-readAllBooks();
+// readAllBooks();
 
 async function updateBookById(id:any, newData:any) {
     try {
@@ -70,7 +70,7 @@ const newData={
     genre:'Philosophy' ,
     isbn:'1019'
 }
-updateBookById(4,newData);
+// updateBookById(4,newData);
 
 async function deleteBookById(id:any) {
     try {
@@ -83,6 +83,6 @@ async function deleteBookById(id:any) {
     }
 }
 
-deleteBookById(5);
+// deleteBookById(5);
 
 export{createBook,readBookById,readAllBooks,updateBookById,deleteBookById};

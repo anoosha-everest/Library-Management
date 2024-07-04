@@ -67,7 +67,7 @@ var data = {
     isbn: '1011',
     publication_year: 2050
 };
-createBook(data);
+// createBook(data);
 function readBookById(id) {
     return __awaiter(this, void 0, void 0, function () {
         var Book, error_2;
@@ -98,7 +98,7 @@ function readBookById(id) {
 }
 exports.readBookById = readBookById;
 var bookId = 3;
-readBookById(bookId);
+// readBookById(bookId);
 function readAllBooks() {
     return __awaiter(this, void 0, void 0, function () {
         var Book, error_3;
@@ -121,7 +121,7 @@ function readAllBooks() {
     });
 }
 exports.readAllBooks = readAllBooks;
-readAllBooks();
+// readAllBooks();
 function updateBookById(id, newData) {
     return __awaiter(this, void 0, void 0, function () {
         var error_4;
@@ -151,7 +151,7 @@ var newData = {
     genre: 'Philosophy',
     isbn: '1019'
 };
-updateBookById(4, newData);
+// updateBookById(4,newData);
 function deleteBookById(id) {
     return __awaiter(this, void 0, void 0, function () {
         var error_5;
@@ -176,4 +176,3 @@ function deleteBookById(id) {
     });
 }
 exports.deleteBookById = deleteBookById;
-deleteBookById(5);

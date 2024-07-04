@@ -17,7 +17,7 @@ const data={
     loan_date:'2024-07-06',
     due_date:'2024-07-07' 
 };
-createLoan(data);
+// createLoan(data);
 
 
 async function readLoanById(id:any) {
@@ -38,7 +38,7 @@ async function readLoanById(id:any) {
   
  
 const loanId = 3; 
-readLoanById(loanId);
+// readLoanById(loanId);
 
 
 async function readAllLoans() {
@@ -52,7 +52,7 @@ async function readAllLoans() {
   }
   
 
-readAllLoans();
+// readAllLoans();
 
 async function updateLoanById(id:any, newData:any) {
     try {
@@ -70,7 +70,7 @@ const newData={
     loan_date:'2024-07-08',
     due_date:'2024-07-10' 
 }
-updateLoanById(4,newData);
+// updateLoanById(4,newData);
 
 async function deleteLoanById(id:any) {
     try {
@@ -83,6 +83,6 @@ async function deleteLoanById(id:any) {
     }
 }
 
-deleteLoanById(5);
+// deleteLoanById(5);
 
 export{createLoan,readLoanById,readAllLoans,updateLoanById,deleteLoanById};

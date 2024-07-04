@@ -66,7 +66,7 @@ var data = {
     loan_date: '2024-07-06',
     due_date: '2024-07-07'
 };
-createLoan(data);
+// createLoan(data);
 function readLoanById(id) {
     return __awaiter(this, void 0, void 0, function () {
         var loan, error_2;
@@ -97,7 +97,7 @@ function readLoanById(id) {
 }
 exports.readLoanById = readLoanById;
 var loanId = 3;
-readLoanById(loanId);
+// readLoanById(loanId);
 function readAllLoans() {
     return __awaiter(this, void 0, void 0, function () {
         var loan, error_3;
@@ -120,7 +120,7 @@ function readAllLoans() {
     });
 }
 exports.readAllLoans = readAllLoans;
-readAllLoans();
+// readAllLoans();
 function updateLoanById(id, newData) {
     return __awaiter(this, void 0, void 0, function () {
         var error_4;
@@ -151,7 +151,7 @@ var newData = {
     loan_date: '2024-07-08',
     due_date: '2024-07-10'
 };
-updateLoanById(4, newData);
+// updateLoanById(4,newData);
 function deleteLoanById(id) {
     return __awaiter(this, void 0, void 0, function () {
         var error_5;
@@ -176,4 +176,3 @@ function deleteLoanById(id) {
     });
 }
 exports.deleteLoanById = deleteLoanById;
-deleteLoanById(5);

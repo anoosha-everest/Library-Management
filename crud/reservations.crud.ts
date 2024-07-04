@@ -16,7 +16,7 @@ const data={
     member_id:1,
     reservation_date:'2024-08-30'
 };
-createReservation(data);
+// createReservation(data);
 
 
 async function readReservationById(id:any) {
@@ -37,7 +37,7 @@ async function readReservationById(id:any) {
   
  
 const reserveId = 3;
-readReservationById(reserveId);
+// readReservationById(reserveId);
 
 
 async function readAllReservations() {
@@ -51,7 +51,7 @@ async function readAllReservations() {
   }
   
 
-readAllReservations();
+// readAllReservations();
 
 async function updateReservationById(id:any, newData:any) {
     try {
@@ -68,7 +68,7 @@ const newData={
     member_id:2,
     reservation_date:'2024-12-30'
 }
-updateReservationById(4,newData);
+// updateReservationById(4,newData);
 
 async function deleteReservationById(id:any) {
     try {
@@ -81,6 +81,6 @@ async function deleteReservationById(id:any) {
     }
 }
 
-deleteReservationById(5);
+// deleteReservationById(5);
 
 export{createReservation,readReservationById,readAllReservations,updateReservationById,deleteReservationById};
