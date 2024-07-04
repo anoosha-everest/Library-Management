@@ -44,10 +44,10 @@ readMemberById(memId);
 async function readAllMembers() {
     try {
       const member = await members.findAll();
-      console.log('AlleBooks:',member.map(member =>member.toJSON()));
+      console.log('All Members:',member.map(member =>member.toJSON()));
       return member;
     } catch (error) {
-      console.error('Error reading Books:', error);
+      console.error('Error reading member:', error);
     }
   }
   
