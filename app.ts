@@ -1,14 +1,15 @@
-import { authors } from './Models/authors';
-import { books } from './Models/books';
-import { members } from './Models/members';
-import { loans } from './Models/loans';
-import { reservations } from './Models/reservations';
+// import { authors } from './Models/authors';
+// import { books } from './Models/books';
+// import { members } from './Models/members';
+// import { loans } from './Models/loans';
+// import { reservations } from './Models/reservations';
 import { insertAuthors } from './data/auth_data';
 import { insertBooks } from './data/books_data';
 import { insertMembers } from './data/mem_data';
 import { insertLoans } from './data/loans_data';
 import { insertReserve } from './data/reserve_data';
 import { connection } from './Models/connection';
+import {authors,books,members,loans,reservations} from './data/associations';
 const sequelize=connection;
 
 // Test the database connection

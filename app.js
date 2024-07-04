@@ -36,17 +36,18 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var authors_1 = require("./Models/authors");
-var books_1 = require("./Models/books");
-var members_1 = require("./Models/members");
-var loans_1 = require("./Models/loans");
-var reservations_1 = require("./Models/reservations");
+// import { authors } from './Models/authors';
+// import { books } from './Models/books';
+// import { members } from './Models/members';
+// import { loans } from './Models/loans';
+// import { reservations } from './Models/reservations';
 var auth_data_1 = require("./data/auth_data");
 var books_data_1 = require("./data/books_data");
 var mem_data_1 = require("./data/mem_data");
 var loans_data_1 = require("./data/loans_data");
 var reserve_data_1 = require("./data/reserve_data");
 var connection_1 = require("./Models/connection");
+var associations_1 = require("./data/associations");
 var sequelize = connection_1.connection;
 // Test the database connection
 sequelize.authenticate()
@@ -63,23 +64,23 @@ function createTableAuthor() {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 6, , 7]);
-                    return [4 /*yield*/, authors_1.authors.sync({ force: true })];
+                    return [4 /*yield*/, associations_1.authors.sync({ force: true })];
                 case 1:
                     _a.sent();
                     console.log("authors table created");
-                    return [4 /*yield*/, books_1.books.sync({ force: true })];
+                    return [4 /*yield*/, associations_1.books.sync({ force: true })];
                 case 2:
                     _a.sent();
                     console.log("books table created");
-                    return [4 /*yield*/, members_1.members.sync({ force: true })];
+                    return [4 /*yield*/, associations_1.members.sync({ force: true })];
                 case 3:
                     _a.sent();
                     console.log("members table created");
-                    return [4 /*yield*/, loans_1.loans.sync({ force: true })];
+                    return [4 /*yield*/, associations_1.loans.sync({ force: true })];
                 case 4:
                     _a.sent();
                     console.log("loans table created");
-                    return [4 /*yield*/, reservations_1.reservations.sync({ force: true })];
+                    return [4 /*yield*/, associations_1.reservations.sync({ force: true })];
                 case 5:
                     _a.sent();
                     console.log("reservations table created");
