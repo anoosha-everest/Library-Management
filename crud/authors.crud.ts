@@ -59,3 +59,15 @@ const newData={
     birth_year:2029
 }
 updateAuthorById(4,newData);
+async function deleteAuthorById(id:any) {
+    try {
+      await authors.destroy({
+        where: { id: id }
+      });
+      console.log('Author deleted successfully');
+    } catch (error) {
+      console.error('Error deleting author:', error);
+    }
+}
+
+deleteAuthorById(8);
