@@ -5,7 +5,7 @@ import { authors } from "../Models/authors";
 //     const author = authors.create(data);
 //     console.log("created author");
 // }
-async function createData(data:any) {
+async function createAuthor(data:any) {
     try {
         const author = await authors.create(data);
         console.log('created author');
@@ -21,10 +21,10 @@ const data={
     birth_year:2000,
     nationality:'India'
 };
-createData(data);
+createAuthor(data);
 
 
-async function readData(id:any) {
+async function readAuthorById(id:any) {
     try {
       const author = await authors.findOne({ where: { id: id } });
       if (author) {
@@ -42,6 +42,20 @@ async function readData(id:any) {
   
  
 const authorId = 3; 
-readData(authorId);
+readAuthorById(authorId);
 
-
+async function updateAuthorById(id:any, newData:any) {
+    try {
+      await authors.update(newData, {
+        where: { id: id }
+      });
+      console.log('Author updated successfully');
+    } catch (error) {
+      console.error('Error updating author:', error);
+    }
+}
+const newData={
+    name: 'Goldie', 
+    birth_year:2029
+}
+updateAuthorById(4,newData);

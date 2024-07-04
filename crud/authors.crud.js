@@ -42,7 +42,7 @@ var authors_1 = require("../Models/authors");
 //     const author = authors.create(data);
 //     console.log("created author");
 // }
-function createData(data) {
+function createAuthor(data) {
     return __awaiter(this, void 0, void 0, function () {
         var author, error_1;
         return __generator(this, function (_a) {
@@ -68,8 +68,8 @@ var data = {
     birth_year: 2000,
     nationality: 'India'
 };
-createData(data);
-function readData(id) {
+createAuthor(data);
+function readAuthorById(id) {
     return __awaiter(this, void 0, void 0, function () {
         var author, error_2;
         return __generator(this, function (_a) {
@@ -97,5 +97,57 @@ function readData(id) {
         });
     });
 }
-var authorId = 36;
-readData(authorId);
+var authorId = 3;
+readAuthorById(authorId);
+function updateAuthorById(id, newData) {
+    return __awaiter(this, void 0, void 0, function () {
+        var error_3;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, authors_1.authors.update(newData, {
+                            where: { id: id }
+                        })];
+                case 1:
+                    _a.sent();
+                    console.log('Author updated successfully');
+                    return [3 /*break*/, 3];
+                case 2:
+                    error_3 = _a.sent();
+                    console.error('Error updating author:', error_3);
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
+            }
+        });
+    });
+}
+var newData = {
+    name: 'Goldie',
+    birth_year: 2029
+};
+updateAuthorById(4, newData);
+function deleteAuthorById(id) {
+    return __awaiter(this, void 0, void 0, function () {
+        var error_4;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, authors_1.authors.destroy({
+                            where: { id: id }
+                        })];
+                case 1:
+                    _a.sent();
+                    console.log('Author deleted successfully');
+                    return [3 /*break*/, 3];
+                case 2:
+                    error_4 = _a.sent();
+                    console.error('Error deleting author:', error_4);
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
+            }
+        });
+    });
+}
+deleteAuthorById(8);
