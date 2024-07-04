@@ -85,3 +85,5 @@ async function deleteAuthorById(id:any) {
 }
 
 deleteAuthorById(8);
+
+export{createAuthor,readAuthorById,readAllAuthors,updateAuthorById,deleteAuthorById};
