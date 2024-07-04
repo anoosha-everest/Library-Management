@@ -36,6 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.deleteAuthorById = exports.updateAuthorById = exports.readAllAuthors = exports.readAuthorById = exports.createAuthor = void 0;
 var authors_1 = require("../Models/authors");
 //function to create a new data
 // function createData(data:any){
@@ -63,6 +64,7 @@ function createAuthor(data) {
         });
     });
 }
+exports.createAuthor = createAuthor;
 var data = {
     name: 'Hareesh',
     birth_year: 2000,
@@ -97,6 +99,7 @@ function readAuthorById(id) {
         });
     });
 }
+exports.readAuthorById = readAuthorById;
 var authorId = 3;
 readAuthorById(authorId);
 function readAllAuthors() {
@@ -120,6 +123,7 @@ function readAllAuthors() {
         });
     });
 }
+exports.readAllAuthors = readAllAuthors;
 readAllAuthors();
 function updateAuthorById(id, newData) {
     return __awaiter(this, void 0, void 0, function () {
@@ -144,6 +148,7 @@ function updateAuthorById(id, newData) {
         });
     });
 }
+exports.updateAuthorById = updateAuthorById;
 var newData = {
     name: 'Goldie',
     birth_year: 2029
@@ -172,4 +177,5 @@ function deleteAuthorById(id) {
         });
     });
 }
+exports.deleteAuthorById = deleteAuthorById;
 deleteAuthorById(8);

@@ -36,143 +36,142 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteMemberById = exports.updateMemberById = exports.readAllMembers = exports.readMemberById = exports.createMember = void 0;
-var members_1 = require("../Models/members");
-function createMember(data) {
+exports.deleteReservationById = exports.updateReservationById = exports.readAllReservations = exports.readReservationById = exports.createReservation = void 0;
+var reservations_1 = require("../Models/reservations");
+function createReservation(data) {
     return __awaiter(this, void 0, void 0, function () {
-        var member, error_1;
+        var reserve, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, members_1.members.create(data)];
+                    return [4 /*yield*/, reservations_1.reservations.create(data)];
                 case 1:
-                    member = _a.sent();
-                    console.log('created member');
+                    reserve = _a.sent();
+                    console.log('created reservation');
                     return [3 /*break*/, 3];
                 case 2:
                     error_1 = _a.sent();
-                    console.error('Error in creating member');
+                    console.error('Error in creating reservation');
                     throw error_1;
                 case 3: return [2 /*return*/];
             }
         });
     });
 }
-exports.createMember = createMember;
+exports.createReservation = createReservation;
 var data = {
-    name: 'Soumya',
-    address: 'Mancherial',
-    phone_number: '9995533218',
-    email: 'soumya@gmail.com'
+    book_id: 4,
+    member_id: 1,
+    reservation_date: '2024-08-30'
 };
-createMember(data);
-function readMemberById(id) {
+createReservation(data);
+function readReservationById(id) {
     return __awaiter(this, void 0, void 0, function () {
-        var member, error_2;
+        var reserve, error_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, members_1.members.findOne({ where: { id: id } })];
+                    return [4 /*yield*/, reservations_1.reservations.findOne({ where: { id: id } })];
                 case 1:
-                    member = _a.sent();
-                    if (member) {
-                        console.log('member found:', member.toJSON());
-                        return [2 /*return*/, member];
+                    reserve = _a.sent();
+                    if (reserve) {
+                        console.log('reservation found:', reserve.toJSON());
+                        return [2 /*return*/, reserve];
                     }
                     else {
-                        console.log('member not found');
+                        console.log('reservation not found');
                         return [2 /*return*/, null];
                     }
                     return [3 /*break*/, 3];
                 case 2:
                     error_2 = _a.sent();
-                    console.error('Error finding member:', error_2);
+                    console.error('Error finding reservation:', error_2);
                     throw error_2;
                 case 3: return [2 /*return*/];
             }
         });
     });
 }
-exports.readMemberById = readMemberById;
-var memId = 3;
-readMemberById(memId);
-function readAllMembers() {
+exports.readReservationById = readReservationById;
+var reserveId = 3;
+readReservationById(reserveId);
+function readAllReservations() {
     return __awaiter(this, void 0, void 0, function () {
-        var member, error_3;
+        var reserve, error_3;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, members_1.members.findAll()];
+                    return [4 /*yield*/, reservations_1.reservations.findAll()];
                 case 1:
-                    member = _a.sent();
-                    console.log('All Members:', member.map(function (member) { return member.toJSON(); }));
-                    return [2 /*return*/, member];
+                    reserve = _a.sent();
+                    console.log('All Reservations:', reserve.map(function (reserve) { return reserve.toJSON(); }));
+                    return [2 /*return*/, reserve];
                 case 2:
                     error_3 = _a.sent();
-                    console.error('Error reading member:', error_3);
+                    console.error('Error reading Reservations:', error_3);
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];
             }
         });
     });
 }
-exports.readAllMembers = readAllMembers;
-readAllMembers();
-function updateMemberById(id, newData) {
+exports.readAllReservations = readAllReservations;
+readAllReservations();
+function updateReservationById(id, newData) {
     return __awaiter(this, void 0, void 0, function () {
         var error_4;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, members_1.members.update(newData, {
+                    return [4 /*yield*/, reservations_1.reservations.update(newData, {
                             where: { id: id }
                         })];
                 case 1:
                     _a.sent();
-                    console.log('member updated successfully');
+                    console.log('reservation updated successfully');
                     return [3 /*break*/, 3];
                 case 2:
                     error_4 = _a.sent();
-                    console.error('Error updating member:', error_4);
+                    console.error('Error updating reservation:', error_4);
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];
             }
         });
     });
 }
-exports.updateMemberById = updateMemberById;
+exports.updateReservationById = updateReservationById;
 var newData = {
-    name: 'Keerthi',
-    address: 'Medak',
-    email: 'keerthi@gmail.com'
+    book_id: 3,
+    member_id: 2,
+    reservation_date: '2024-12-30'
 };
-updateMemberById(4, newData);
-function deleteMemberById(id) {
+updateReservationById(4, newData);
+function deleteReservationById(id) {
     return __awaiter(this, void 0, void 0, function () {
         var error_5;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, members_1.members.destroy({
+                    return [4 /*yield*/, reservations_1.reservations.destroy({
                             where: { id: id }
                         })];
                 case 1:
                     _a.sent();
-                    console.log('member deleted successfully');
+                    console.log('reservation deleted successfully');
                     return [3 /*break*/, 3];
                 case 2:
                     error_5 = _a.sent();
-                    console.error('Error deleting member:', error_5);
+                    console.error('Error deleting reservation:', error_5);
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];
             }
         });
     });
 }
-exports.deleteMemberById = deleteMemberById;
-deleteMemberById(5);
+exports.deleteReservationById = deleteReservationById;
+deleteReservationById(5);
