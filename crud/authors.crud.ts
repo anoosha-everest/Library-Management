@@ -44,6 +44,20 @@ async function readAuthorById(id:any) {
 const authorId = 3; 
 readAuthorById(authorId);
 
+
+async function readAllAuthors() {
+    try {
+      const author = await authors.findAll();
+      console.log('All authors:', author.map(author => author.toJSON()));
+      return authors;
+    } catch (error) {
+      console.error('Error reading authors:', error);
+    }
+  }
+  
+
+readAllAuthors();
+
 async function updateAuthorById(id:any, newData:any) {
     try {
       await authors.update(newData, {

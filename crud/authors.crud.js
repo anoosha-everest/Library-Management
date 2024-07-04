@@ -99,9 +99,31 @@ function readAuthorById(id) {
 }
 var authorId = 3;
 readAuthorById(authorId);
+function readAllAuthors() {
+    return __awaiter(this, void 0, void 0, function () {
+        var author, error_3;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, authors_1.authors.findAll()];
+                case 1:
+                    author = _a.sent();
+                    console.log('All authors:', author.map(function (author) { return author.toJSON(); }));
+                    return [2 /*return*/, authors_1.authors];
+                case 2:
+                    error_3 = _a.sent();
+                    console.error('Error reading authors:', error_3);
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
+            }
+        });
+    });
+}
+readAllAuthors();
 function updateAuthorById(id, newData) {
     return __awaiter(this, void 0, void 0, function () {
-        var error_3;
+        var error_4;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -114,8 +136,8 @@ function updateAuthorById(id, newData) {
                     console.log('Author updated successfully');
                     return [3 /*break*/, 3];
                 case 2:
-                    error_3 = _a.sent();
-                    console.error('Error updating author:', error_3);
+                    error_4 = _a.sent();
+                    console.error('Error updating author:', error_4);
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];
             }
@@ -129,7 +151,7 @@ var newData = {
 updateAuthorById(4, newData);
 function deleteAuthorById(id) {
     return __awaiter(this, void 0, void 0, function () {
-        var error_4;
+        var error_5;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -142,8 +164,8 @@ function deleteAuthorById(id) {
                     console.log('Author deleted successfully');
                     return [3 /*break*/, 3];
                 case 2:
-                    error_4 = _a.sent();
-                    console.error('Error deleting author:', error_4);
+                    error_5 = _a.sent();
+                    console.error('Error deleting author:', error_5);
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];
             }
