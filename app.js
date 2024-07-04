@@ -41,11 +41,11 @@ var books_1 = require("./Models/books");
 var members_1 = require("./Models/members");
 var loans_1 = require("./Models/loans");
 var reservations_1 = require("./Models/reservations");
-// import { insertAuthors } from './data/auth_data';
-// import { insertBooks } from './data/books_data';
-// import { insertMembers } from './data/mem_data';
-// import { insertLoans } from './data/loans_data';
-// import { insertReserve } from './data/reserve_data';
+var auth_data_1 = require("./data/auth_data");
+var books_data_1 = require("./data/books_data");
+var mem_data_1 = require("./data/mem_data");
+var loans_data_1 = require("./data/loans_data");
+var reserve_data_1 = require("./data/reserve_data");
 var connection_1 = require("./Models/connection");
 var sequelize = connection_1.connection;
 // Test the database connection
@@ -94,11 +94,11 @@ function createTableAuthor() {
     });
 }
 createTableAuthor();
-// sequelize.sync({ force: true })
-//     .then(() => {
-//         console.log('Database synchronized');
-//         return Promise.all([insertAuthors(), insertBooks(),insertMembers()]).then(() => insertLoans()).then(()=>insertReserve());
-//     })
-//     .catch(error => {
-//         console.error('Error synchronizing the database:', error);
-//     });
+sequelize.sync({ force: true })
+    .then(function () {
+    console.log('Database synchronized');
+    return Promise.all([(0, auth_data_1.insertAuthors)(), (0, books_data_1.insertBooks)(), (0, mem_data_1.insertMembers)()]).then(function () { return (0, loans_data_1.insertLoans)(); }).then(function () { return (0, reserve_data_1.insertReserve)(); });
+})
+    .catch(function (error) {
+    console.error('Error synchronizing the database:', error);
+});

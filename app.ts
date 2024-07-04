@@ -3,11 +3,11 @@ import { books } from './Models/books';
 import { members } from './Models/members';
 import { loans } from './Models/loans';
 import { reservations } from './Models/reservations';
-// import { insertAuthors } from './data/auth_data';
-// import { insertBooks } from './data/books_data';
-// import { insertMembers } from './data/mem_data';
-// import { insertLoans } from './data/loans_data';
-// import { insertReserve } from './data/reserve_data';
+import { insertAuthors } from './data/auth_data';
+import { insertBooks } from './data/books_data';
+import { insertMembers } from './data/mem_data';
+import { insertLoans } from './data/loans_data';
+import { insertReserve } from './data/reserve_data';
 import { connection } from './Models/connection';
 const sequelize=connection;
 
@@ -38,13 +38,13 @@ async function createTableAuthor () {
 }
 createTableAuthor();
 
-// sequelize.sync({ force: true })
-//     .then(() => {
-//         console.log('Database synchronized');
+sequelize.sync({ force: true })
+    .then(() => {
+        console.log('Database synchronized');
 
-//         return Promise.all([insertAuthors(), insertBooks(),insertMembers()]).then(() => insertLoans()).then(()=>insertReserve());
-//     })
-//     .catch(error => {
-//         console.error('Error synchronizing the database:', error);
-//     });
+        return Promise.all([insertAuthors(), insertBooks(),insertMembers()]).then(() => insertLoans()).then(()=>insertReserve());
+    })
+    .catch(error => {
+        console.error('Error synchronizing the database:', error);
+    });
 
