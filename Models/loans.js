@@ -4,7 +4,7 @@ exports.loans = void 0;
 var sequelize_1 = require("sequelize");
 var members_1 = require("./members");
 var books_1 = require("./books");
-var connection_1 = require("./connection");
+var connection_1 = require("../config/connection");
 var sequelize = connection_1.connection;
 exports.loans = sequelize.define('loans', {
     id: {

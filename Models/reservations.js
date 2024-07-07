@@ -4,7 +4,7 @@ exports.reservations = void 0;
 var sequelize_1 = require("sequelize");
 var books_1 = require("./books");
 var members_1 = require("./members");
-var connection_1 = require("./connection");
+var connection_1 = require("../config/connection");
 var sequelize = connection_1.connection;
 exports.reservations = sequelize.define('reservations', {
     id: {

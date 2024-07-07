@@ -1,5 +1,5 @@
 import { Sequelize, DataTypes } from 'sequelize';
-import { connection } from './connection';
+import { connection } from '../config/connection';
 const sequelize=connection;
 const authors =sequelize.define(
     'author',{

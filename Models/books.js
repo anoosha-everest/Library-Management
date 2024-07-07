@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.books = void 0;
 var sequelize_1 = require("sequelize");
 var authors_1 = require("./authors");
-var connection_1 = require("./connection");
+var connection_1 = require("../config/connection");
 var sequelize = connection_1.connection;
 exports.books = sequelize.define('books', {
     id: {

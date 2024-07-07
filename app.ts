@@ -1,3 +1,5 @@
+import {Sequelize} from 'sequelize';
+// import { QueryTypes } from 'sequelize';
 import { authors } from './Models/authors';
 import { books } from './Models/books';
 import { members } from './Models/members';
@@ -8,14 +10,15 @@ import { insertBooks } from './data/books_data';
 import { insertMembers } from './data/mem_data';
 import { insertLoans } from './data/loans_data';
 import { insertReserve } from './data/reserve_data';
-import { connection } from './Models/connection';
-import {associate} from './data/associations';
+import { connection } from './config/connection';
+import {associate} from './config/associations';
 import {createAuthor,readAuthorById,readAllAuthors,updateAuthorById,deleteAuthorById} from './crud/authors.crud';
 import {createBook,readBookById,readAllBooks,updateBookById,deleteBookById} from './crud/books.crud';
 import {createMember,readMemberById,readAllMembers,updateMemberById,deleteMemberById} from './crud/members.crud';
 import {createLoan,readLoanById,readAllLoans,updateLoanById,deleteLoanById} from './crud/loans.crud';
 import {createReservation,readReservationById,readAllReservations,updateReservationById,deleteReservationById} from './crud/reservations.crud';
 const sequelize=connection;
+
 
 // Test the database connection
 sequelize.authenticate()
@@ -68,6 +71,18 @@ async function syncDatabaseAndInsertData() {
         console.log('All loans:', loann);
         const reserve = await readAllReservations();
         console.log('All reservations:', reserve);
+        let id=1;
+        const [results, metadata] = await sequelize.query("SELECT * FROM authors");
+        console.table(results);
+        const read = await sequelize.query(
+            "SELECT * FROM authors WHERE id = :id",
+            {
+                replacements: { id },
+                type: (sequelize as any).QueryTypes.SELECT
+            }
+        );
+        console.table(read);
+        
     } catch (error) {
         console.error('Error synchronizing the database:', error);
     }

@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import { connection } from './connection';
+import { connection } from '../config/connection';
 const sequelize=connection;
 
 

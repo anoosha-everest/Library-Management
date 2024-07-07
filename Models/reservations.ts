@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 import {books} from "./books";
 import {members} from "./members";
-import { connection } from './connection';
+import { connection } from '../config/connection';
 const sequelize=connection;
 
 export const reservations=sequelize.define(

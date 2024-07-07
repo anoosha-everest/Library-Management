@@ -36,6 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// import { QueryTypes } from 'sequelize';
 var authors_1 = require("./Models/authors");
 var books_1 = require("./Models/books");
 var members_1 = require("./Models/members");
@@ -46,8 +47,8 @@ var books_data_1 = require("./data/books_data");
 var mem_data_1 = require("./data/mem_data");
 var loans_data_1 = require("./data/loans_data");
 var reserve_data_1 = require("./data/reserve_data");
-var connection_1 = require("./Models/connection");
-var associations_1 = require("./data/associations");
+var connection_1 = require("./config/connection");
+var associations_1 = require("./config/associations");
 var authors_crud_1 = require("./crud/authors.crud");
 var books_crud_1 = require("./crud/books.crud");
 var members_crud_1 = require("./crud/members.crud");
@@ -102,57 +103,69 @@ function createTableAuthor() {
 // Function to synchronize database and insert data
 function syncDatabaseAndInsertData() {
     return __awaiter(this, void 0, void 0, function () {
-        var authorr, bookk, mem, loann, reserve, error_1;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
+        var authorr, bookk, mem, loann, reserve, id, _a, results, metadata, read, error_1;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
                 case 0:
-                    _a.trys.push([0, 12, , 13]);
+                    _b.trys.push([0, 14, , 15]);
                     return [4 /*yield*/, sequelize.sync({ force: true })];
                 case 1:
-                    _a.sent();
+                    _b.sent();
                     console.log('Database synchronized');
                     return [4 /*yield*/, createTableAuthor()];
                 case 2:
-                    _a.sent();
+                    _b.sent();
                     return [4 /*yield*/, (0, associations_1.associate)()];
                 case 3:
-                    _a.sent();
+                    _b.sent();
                     return [4 /*yield*/, Promise.all([(0, auth_data_1.insertAuthors)(), (0, books_data_1.insertBooks)(), (0, mem_data_1.insertMembers)()])];
                 case 4:
-                    _a.sent();
+                    _b.sent();
                     return [4 /*yield*/, (0, loans_data_1.insertLoans)()];
                 case 5:
-                    _a.sent();
+                    _b.sent();
                     return [4 /*yield*/, (0, reserve_data_1.insertReserve)()];
                 case 6:
-                    _a.sent();
+                    _b.sent();
                     console.log('Data inserted successfully');
                     return [4 /*yield*/, (0, authors_crud_1.readAllAuthors)()];
                 case 7:
-                    authorr = _a.sent();
+                    authorr = _b.sent();
                     console.log('All authors:', authorr);
                     return [4 /*yield*/, (0, books_crud_1.readAllBooks)()];
                 case 8:
-                    bookk = _a.sent();
+                    bookk = _b.sent();
                     console.log('All books:', bookk);
                     return [4 /*yield*/, (0, members_crud_1.readAllMembers)()];
                 case 9:
-                    mem = _a.sent();
+                    mem = _b.sent();
                     console.log('All members:', mem);
                     return [4 /*yield*/, (0, loans_crud_1.readAllLoans)()];
                 case 10:
-                    loann = _a.sent();
+                    loann = _b.sent();
                     console.log('All loans:', loann);
                     return [4 /*yield*/, (0, reservations_crud_1.readAllReservations)()];
                 case 11:
-                    reserve = _a.sent();
+                    reserve = _b.sent();
                     console.log('All reservations:', reserve);
-                    return [3 /*break*/, 13];
+                    id = 1;
+                    return [4 /*yield*/, sequelize.query("SELECT * FROM authors")];
                 case 12:
-                    error_1 = _a.sent();
+                    _a = _b.sent(), results = _a[0], metadata = _a[1];
+                    console.table(results);
+                    return [4 /*yield*/, sequelize.query("SELECT * FROM authors WHERE id = :id", {
+                            replacements: { id: id },
+                            type: sequelize.QueryTypes.SELECT
+                        })];
+                case 13:
+                    read = _b.sent();
+                    console.table(read);
+                    return [3 /*break*/, 15];
+                case 14:
+                    error_1 = _b.sent();
                     console.error('Error synchronizing the database:', error_1);
-                    return [3 /*break*/, 13];
-                case 13: return [2 /*return*/];
+                    return [3 /*break*/, 15];
+                case 15: return [2 /*return*/];
             }
         });
     });

@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import {members} from "./members";
 import {books} from "./books";
-import { connection } from './connection';
+import { connection } from '../config/connection';
 const sequelize=connection;
 
 
