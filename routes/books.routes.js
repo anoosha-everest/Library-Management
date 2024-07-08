@@ -38,20 +38,20 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var express = require('express');
 var router = express.Router();
-var authors_1 = require("../Models/authors");
-// Get all authors
+var books_1 = require("../Models/books");
+//get all books
 router.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var author, err_1;
+    var book, err_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, authors_1.authors.findAll()];
+                return [4 /*yield*/, books_1.books.findAll()];
             case 1:
-                author = _a.sent();
-                if (author.length === 0)
-                    return [2 /*return*/, res.status(404).json({ message: "No Authors Found" })];
-                res.json({ authors: author });
+                book = _a.sent();
+                if (book.length === 0)
+                    return [2 /*return*/, res.status(404).json({ message: 'books not found' })];
+                res.json({ books: book });
                 return [3 /*break*/, 3];
             case 2:
                 err_1 = _a.sent();
@@ -61,20 +61,20 @@ router.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, f
         }
     });
 }); });
-// Get one author
+//get one book
 router.get('/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var author, err_2;
+    var book, err_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, authors_1.authors.findByPk(req.params.id)];
+                return [4 /*yield*/, books_1.books.findByPk(req.params.id)];
             case 1:
-                author = _a.sent();
-                if (author === null) {
-                    return [2 /*return*/, res.status(404).json({ message: "authors Not Found" })];
+                book = _a.sent();
+                if (!book) {
+                    return [2 /*return*/, res.status(500).json({ message: 'book not found' })];
                 }
-                res.json(author);
+                res.json(book);
                 return [3 /*break*/, 3];
             case 2:
                 err_2 = _a.sent();
@@ -84,17 +84,17 @@ router.get('/:id', function (req, res) { return __awaiter(void 0, void 0, void 0
         }
     });
 }); });
-// Create a new author
+//create a new book
 router.post('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var author, err_3;
+    var book, err_3;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, authors_1.authors.create(req.body)];
+                return [4 /*yield*/, books_1.books.create(req.body)];
             case 1:
-                author = _a.sent();
-                res.json(author);
+                book = _a.sent();
+                res.json(book);
                 return [3 /*break*/, 3];
             case 2:
                 err_3 = _a.sent();
@@ -104,24 +104,24 @@ router.post('/', function (req, res) { return __awaiter(void 0, void 0, void 0, 
         }
     });
 }); });
-// Update an author
+//update a book
 router.put('/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var updated, updatedAuthor, err_4;
+    var updated, updatedBook, err_4;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 5, , 6]);
-                return [4 /*yield*/, authors_1.authors.update(req.body, { where: { id: req.params.id } })];
+                return [4 /*yield*/, books_1.books.update(req.body, { where: { id: req.params.id } })];
             case 1:
                 updated = (_a.sent())[0];
                 if (!updated) return [3 /*break*/, 3];
-                return [4 /*yield*/, authors_1.authors.findByPk(req.params.id)];
+                return [4 /*yield*/, books_1.books.findByPk(req.params.id)];
             case 2:
-                updatedAuthor = _a.sent();
-                res.json(updatedAuthor);
+                updatedBook = _a.sent();
+                res.json(updatedBook);
                 return [3 /*break*/, 4];
             case 3:
-                res.status(404).json({ message: "authors Not Found" });
+                res.status(404).json({ message: "books Not Found" });
                 _a.label = 4;
             case 4: return [3 /*break*/, 6];
             case 5:
@@ -132,21 +132,21 @@ router.put('/:id', function (req, res) { return __awaiter(void 0, void 0, void 0
         }
     });
 }); });
-// Delete an author
+//delete a book
 router.delete('/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var deleted, err_5;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, authors_1.authors.destroy({ where: { id: req.params.id } })];
+                return [4 /*yield*/, books_1.books.destroy({ where: { id: req.params.id } })];
             case 1:
                 deleted = _a.sent();
                 if (deleted) {
-                    res.json({ message: "authors Deleted" });
+                    res.json({ message: "Book Deleted" });
                 }
                 else {
-                    res.status(404).json({ message: "authors Not Found" });
+                    res.status(404).json({ message: "Book Not Found" });
                 }
                 return [3 /*break*/, 3];
             case 2:

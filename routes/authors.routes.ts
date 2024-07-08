@@ -32,7 +32,7 @@ router.post('/', async (req, res) => {
         const author = await authors.create(req.body);
         res.json(author);
     } catch (err) {
-        res.status(400).json({message: err.message});
+        res.status(500).json({message: err.message});
     }
 });
 
@@ -47,7 +47,7 @@ router.put('/:id', async (req, res) => {
             res.status(404).json({ message: "authors Not Found" });
         }
     } catch (err) {
-        res.status(400).json({message: err.message});
+        res.status(500).json({message: err.message});
     }
 });
 // Delete an author
