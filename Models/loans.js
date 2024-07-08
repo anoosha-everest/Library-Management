@@ -17,14 +17,14 @@ exports.loans = sequelize.define('loans', {
         references: {
             model: books_1.books,
             key: 'id'
-        }
+        }, onDelete: 'CASCADE', onUpdate: 'CASCADE',
     },
     member_id: {
         type: sequelize_1.DataTypes.INTEGER,
         references: {
             model: members_1.members,
             key: 'id'
-        }
+        }, onDelete: 'CASCADE', onUpdate: 'CASCADE',
     },
     loan_date: {
         type: sequelize_1.DataTypes.DATE,

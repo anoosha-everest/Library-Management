@@ -44,16 +44,28 @@ var loans_1 = require("../Models/loans");
 var reservations_1 = require("../Models/reservations");
 var associate = (function () { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
-        authors_1.authors.hasMany(books_1.books);
-        books_1.books.belongsTo(authors_1.authors);
-        books_1.books.hasMany(loans_1.loans, { foreignKey: 'book_id' });
-        loans_1.loans.belongsTo(books_1.books, { foreignKey: 'book_id' });
-        members_1.members.hasMany(loans_1.loans, { foreignKey: 'member_id' });
-        loans_1.loans.belongsTo(members_1.members, { foreignKey: 'member_id' });
-        books_1.books.hasMany(reservations_1.reservations, { foreignKey: 'book_id' });
-        reservations_1.reservations.belongsTo(books_1.books, { foreignKey: 'book_id' });
-        members_1.members.hasMany(reservations_1.reservations, { foreignKey: 'member_id' });
-        reservations_1.reservations.belongsTo(members_1.members, { foreignKey: 'member_id' });
+        authors_1.authors.hasMany(books_1.books, { onDelete: 'CASCADE',
+            onUpdate: 'CASCADE' });
+        books_1.books.belongsTo(authors_1.authors, { onDelete: 'CASCADE',
+            onUpdate: 'CASCADE' });
+        books_1.books.hasMany(loans_1.loans, { foreignKey: 'book_id',
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE'
+        });
+        loans_1.loans.belongsTo(books_1.books, { foreignKey: 'book_id', onDelete: 'CASCADE',
+            onUpdate: 'CASCADE' });
+        members_1.members.hasMany(loans_1.loans, { foreignKey: 'member_id', onDelete: 'CASCADE',
+            onUpdate: 'CASCADE' });
+        loans_1.loans.belongsTo(members_1.members, { foreignKey: 'member_id', onDelete: 'CASCADE',
+            onUpdate: 'CASCADE' });
+        books_1.books.hasMany(reservations_1.reservations, { foreignKey: 'book_id', onDelete: 'CASCADE',
+            onUpdate: 'CASCADE' });
+        reservations_1.reservations.belongsTo(books_1.books, { foreignKey: 'book_id', onDelete: 'CASCADE',
+            onUpdate: 'CASCADE' });
+        members_1.members.hasMany(reservations_1.reservations, { foreignKey: 'member_id', onDelete: 'CASCADE',
+            onUpdate: 'CASCADE' });
+        reservations_1.reservations.belongsTo(members_1.members, { foreignKey: 'member_id', onDelete: 'CASCADE',
+            onUpdate: 'CASCADE' });
         return [2 /*return*/];
     });
 }); });

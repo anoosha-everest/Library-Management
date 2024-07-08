@@ -17,8 +17,9 @@ export const books=sequelize.define(
             type:DataTypes.INTEGER,
             references:{
                 model:authors,
-                key:'id'
-            }
+                key:'id',
+                
+            }, onDelete:'CASCADE', onUpdate: 'CASCADE',
         },
         genre:{
             type:DataTypes.STRING(100),

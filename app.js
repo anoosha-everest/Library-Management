@@ -55,6 +55,12 @@ var members_crud_1 = require("./crud/members.crud");
 var loans_crud_1 = require("./crud/loans.crud");
 var reservations_crud_1 = require("./crud/reservations.crud");
 var sequelize = connection_1.connection;
+var express = require("express");
+var app = express();
+var authors_routes_1 = require("./routes/authors.routes");
+app.use(express.urlencoded({ extended: true })); // Middleware to parse URL-encoded requests
+app.use(express.json()); // Middleware to parse JSON requests
+var bodyParser = require('body-parser');
 // Test the database connection
 sequelize.authenticate()
     .then(function () {
@@ -172,3 +178,12 @@ function syncDatabaseAndInsertData() {
 }
 ;
 syncDatabaseAndInsertData();
+// Ping route
+app.use('/api/ping', (function (req, res) {
+    res.json({ message: 'pong' });
+}));
+app.use('/api/authors', authors_routes_1.default);
+var PORT = process.env.PORT || 3000;
+app.listen(PORT, function () {
+    console.log("Server is running on port ".concat(PORT));
+});

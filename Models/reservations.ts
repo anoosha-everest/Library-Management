@@ -16,14 +16,14 @@ export const reservations=sequelize.define(
             references:{
                 model:books,
                 key:'id'
-            }
+            }, onDelete:'CASCADE', onUpdate: 'CASCADE',
         },
         member_id:{
             type:DataTypes.INTEGER,
             references:{
                 model:members,
                 key:'id'
-            }
+            }, onDelete:'CASCADE', onUpdate: 'CASCADE',
         },
         reservation_date:{
             type:DataTypes.DATE,

@@ -18,8 +18,13 @@ import {createMember,readMemberById,readAllMembers,updateMemberById,deleteMember
 import {createLoan,readLoanById,readAllLoans,updateLoanById,deleteLoanById} from './crud/loans.crud';
 import {createReservation,readReservationById,readAllReservations,updateReservationById,deleteReservationById} from './crud/reservations.crud';
 const sequelize=connection;
+import * as express from 'express';
+const app:any = express();
+import authorRoutes from './routes/authors.routes';
+app.use(express.urlencoded({ extended: true })); // Middleware to parse URL-encoded requests
+app.use(express.json()); // Middleware to parse JSON requests
 
-
+var bodyParser = require('body-parser');
 // Test the database connection
 sequelize.authenticate()
     .then(() => {
@@ -89,3 +94,15 @@ async function syncDatabaseAndInsertData() {
 };
 
 syncDatabaseAndInsertData();
+
+// Ping route
+app.use('/api/ping', ((req, res) => {  
+    res.json({ message: 'pong' });
+}));
+
+app.use('/api/authors',authorRoutes);
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});

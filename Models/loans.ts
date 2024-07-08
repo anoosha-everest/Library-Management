@@ -17,14 +17,14 @@ export const loans=sequelize.define(
             references:{
                 model:books,
                 key:'id'
-            }
+            }, onDelete:'CASCADE', onUpdate: 'CASCADE',
         },
         member_id:{
             type:DataTypes.INTEGER,
             references:{
                 model:members,
                 key:'id'
-            }
+            }, onDelete:'CASCADE', onUpdate: 'CASCADE',
         },
         loan_date:{
             type:DataTypes.DATE,
