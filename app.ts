@@ -24,6 +24,7 @@ import authorRoutes from './routes/authors.routes';
 import bookRoutes from './routes/books.routes';
 import memberRoutes from './routes/members.routes';
 import loanRoutes from './routes/loans.routes';
+import reservationRoutes from './routes/reservations.routes';
 app.use(express.urlencoded({ extended: true })); // Middleware to parse URL-encoded requests
 app.use(express.json()); // Middleware to parse JSON requests
 
@@ -107,6 +108,7 @@ app.use('/api/authors',authorRoutes);
 app.use('/api/books',bookRoutes);
 app.use('/api/members',memberRoutes);
 app.use('/api/loans',loanRoutes);
+app.use('/api/reservations',reservationRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

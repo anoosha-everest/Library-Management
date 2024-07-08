@@ -61,6 +61,7 @@ var authors_routes_1 = require("./routes/authors.routes");
 var books_routes_1 = require("./routes/books.routes");
 var members_routes_1 = require("./routes/members.routes");
 var loans_routes_1 = require("./routes/loans.routes");
+var reservations_routes_1 = require("./routes/reservations.routes");
 app.use(express.urlencoded({ extended: true })); // Middleware to parse URL-encoded requests
 app.use(express.json()); // Middleware to parse JSON requests
 var bodyParser = require('body-parser');
@@ -189,6 +190,7 @@ app.use('/api/authors', authors_routes_1.default);
 app.use('/api/books', books_routes_1.default);
 app.use('/api/members', members_routes_1.default);
 app.use('/api/loans', loans_routes_1.default);
+app.use('/api/reservations', reservations_routes_1.default);
 var PORT = process.env.PORT || 3000;
 app.listen(PORT, function () {
     console.log("Server is running on port ".concat(PORT));
