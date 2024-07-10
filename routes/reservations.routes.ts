@@ -1,7 +1,7 @@
 const express=require('express');
 const router=express.Router();
 import {reservations} from '../Models/reservations';
-
+import query,{findBooksReserved} from '../queries/reservations_query';
 // Get all reservations
 router.get('/', async (req, res) => {
     try {
@@ -63,5 +63,29 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json({message: err.message});
     }
 });
+
+// Get book titles reserved by particular member
+router.get('/member/:id', async (req, res) => {
+    try {
+        const mem = req.params.id;
+        if (isNaN(mem)) {
+            return res.status(404).json({ message: "reservation Not Found with member id" });
+        }
+        const titles=await query(mem);
+        res.json(titles);
+    } catch (err) {
+        res.status(500).json({message: err.message});
+    }
+});
+//get count of books reserved
+router.get('/books/count',async(req,res)=>{
+    try {
+        
+        const cnt=await findBooksReserved();
+        res.json(cnt);
+    } catch (err) {
+        res.status(500).json({message: err.message});
+    }
+})
 
 export default router;

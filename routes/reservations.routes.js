@@ -39,6 +39,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express = require('express');
 var router = express.Router();
 var reservations_1 = require("../Models/reservations");
+var reservations_query_1 = require("../queries/reservations_query");
 // Get all reservations
 router.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var reservation, err_1;
@@ -152,6 +153,50 @@ router.delete('/:id', function (req, res) { return __awaiter(void 0, void 0, voi
             case 2:
                 err_5 = _a.sent();
                 res.status(500).json({ message: err_5.message });
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
+// Get book titles reserved by particular member
+router.get('/member/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var mem, titles, err_6;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                mem = req.params.id;
+                if (isNaN(mem)) {
+                    return [2 /*return*/, res.status(404).json({ message: "reservation Not Found with member id" })];
+                }
+                return [4 /*yield*/, (0, reservations_query_1.default)(mem)];
+            case 1:
+                titles = _a.sent();
+                res.json(titles);
+                return [3 /*break*/, 3];
+            case 2:
+                err_6 = _a.sent();
+                res.status(500).json({ message: err_6.message });
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
+//get count of books reserved
+router.get('/books/count', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var cnt, err_7;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, (0, reservations_query_1.findBooksReserved)()];
+            case 1:
+                cnt = _a.sent();
+                res.json(cnt);
+                return [3 /*break*/, 3];
+            case 2:
+                err_7 = _a.sent();
+                res.status(500).json({ message: err_7.message });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
