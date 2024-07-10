@@ -39,6 +39,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express = require('express');
 var router = express.Router();
 var loans_1 = require("../Models/loans");
+var loans_query_1 = require("../queries/loans_query");
 // Get all loans
 router.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var loan, err_1;
@@ -152,6 +153,30 @@ router.delete('/:id', function (req, res) { return __awaiter(void 0, void 0, voi
             case 2:
                 err_5 = _a.sent();
                 res.status(500).json({ message: err_5.message });
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
+// Route to get book titles by author ID
+router.get('/books/available', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var date, bookTitles, error_1;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                date = req.body;
+                console.log("hello", date);
+                return [4 /*yield*/, (0, loans_query_1.default)(date.start, date.end)];
+            case 1:
+                bookTitles = _a.sent();
+                console.log(date.start);
+                res.json({ bookTitles: bookTitles });
+                return [3 /*break*/, 3];
+            case 2:
+                error_1 = _a.sent();
+                console.error(error_1);
+                res.status(500).json({ error: 'An error occurred while fetching book titles' });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }

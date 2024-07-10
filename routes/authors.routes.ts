@@ -1,6 +1,7 @@
 const express=require('express');
 const router=express.Router();
 import {authors} from '../Models/authors';
+import query from '../queries/authors_query';
 
 // Get all authors
 router.get('/', async (req, res) => {
@@ -13,6 +14,7 @@ router.get('/', async (req, res) => {
         res.status(500).json({message: err.message});
     }
 });
+
 // Get one author
 router.get('/:id', async (req, res) => {
     try {
@@ -62,6 +64,23 @@ router.delete('/:id', async (req, res) => {
     } catch (err) {
         res.status(500).json({message: err.message});
     }
+});
+
+
+// Route to get book titles by author ID
+router.get('/:authorId/books', async (req, res) => {
+    try {
+        const authorId = parseInt(req.params.authorId);
+        if (isNaN(authorId)) {
+          return res.status(400).json({ error: 'Invalid author ID' });
+        }
+    
+        const bookTitles = await query(authorId);
+        res.json({ bookTitles });
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'An error occurred while fetching book titles' });
+      }
 });
 
 export default router;

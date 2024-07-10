@@ -1,6 +1,7 @@
 const express=require('express');
 const router=express.Router();
 import {loans} from '../Models/loans';
+import query from '../queries/loans_query';
 
 // Get all loans
 router.get('/', async (req, res) => {
@@ -61,6 +62,19 @@ router.delete('/:id', async (req, res) => {
     } catch (err) {
         res.status(500).json({message: err.message});
     }
+});
+// Route to get book titles by author ID
+router.get('/books/available', async (req, res) => {
+    try {
+        const date = req.body;
+        console.log("hello",date);
+        const bookTitles = await query(date.start,date.end);
+        console.log(date.start);
+        res.json({ bookTitles });
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'An error occurred while fetching book titles' });
+      }
 });
 
 export default router;

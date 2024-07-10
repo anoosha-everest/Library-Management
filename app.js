@@ -64,7 +64,6 @@ var loans_routes_1 = require("./routes/loans.routes");
 var reservations_routes_1 = require("./routes/reservations.routes");
 app.use(express.urlencoded({ extended: true })); // Middleware to parse URL-encoded requests
 app.use(express.json()); // Middleware to parse JSON requests
-var bodyParser = require('body-parser');
 // Test the database connection
 sequelize.authenticate()
     .then(function () {
@@ -113,11 +112,11 @@ function createTableAuthor() {
 // Function to synchronize database and insert data
 function syncDatabaseAndInsertData() {
     return __awaiter(this, void 0, void 0, function () {
-        var authorr, bookk, mem, loann, reserve, id, _a, results, metadata, read, error_1;
+        var authorr, bookk, mem, loann, reserve, id, _a, results, metadata, error_1;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
-                    _b.trys.push([0, 14, , 15]);
+                    _b.trys.push([0, 13, , 14]);
                     return [4 /*yield*/, sequelize.sync({ force: true })];
                 case 1:
                     _b.sent();
@@ -163,19 +162,12 @@ function syncDatabaseAndInsertData() {
                 case 12:
                     _a = _b.sent(), results = _a[0], metadata = _a[1];
                     console.table(results);
-                    return [4 /*yield*/, sequelize.query("SELECT * FROM authors WHERE id = :id", {
-                            replacements: { id: id },
-                            type: sequelize.QueryTypes.SELECT
-                        })];
+                    return [3 /*break*/, 14];
                 case 13:
-                    read = _b.sent();
-                    console.table(read);
-                    return [3 /*break*/, 15];
-                case 14:
                     error_1 = _b.sent();
                     console.error('Error synchronizing the database:', error_1);
-                    return [3 /*break*/, 15];
-                case 15: return [2 /*return*/];
+                    return [3 /*break*/, 14];
+                case 14: return [2 /*return*/];
             }
         });
     });

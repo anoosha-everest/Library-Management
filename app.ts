@@ -28,7 +28,6 @@ import reservationRoutes from './routes/reservations.routes';
 app.use(express.urlencoded({ extended: true })); // Middleware to parse URL-encoded requests
 app.use(express.json()); // Middleware to parse JSON requests
 
-var bodyParser = require('body-parser');
 // Test the database connection
 sequelize.authenticate()
     .then(() => {
@@ -83,14 +82,6 @@ async function syncDatabaseAndInsertData() {
         let id=1;
         const [results, metadata] = await sequelize.query("SELECT * FROM authors");
         console.table(results);
-        const read = await sequelize.query(
-            "SELECT * FROM authors WHERE id = :id",
-            {
-                replacements: { id },
-                type: (sequelize as any).QueryTypes.SELECT
-            }
-        );
-        console.table(read);
         
     } catch (error) {
         console.error('Error synchronizing the database:', error);

@@ -39,6 +39,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express = require('express');
 var router = express.Router();
 var books_1 = require("../Models/books");
+var authors_query_1 = require("../queries/authors_query");
 //get all books
 router.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var book, err_1;
@@ -152,6 +153,32 @@ router.delete('/:id', function (req, res) { return __awaiter(void 0, void 0, voi
             case 2:
                 err_5 = _a.sent();
                 res.status(500).json({ message: err_5.message });
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
+//get author by book title
+router.get('/author/title', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var booktitle, author, error_1;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                booktitle = req.body.title;
+                console.log(booktitle);
+                if (!booktitle) {
+                    return [2 /*return*/, res.status(400).json({ error: 'Invalid book title' })];
+                }
+                return [4 /*yield*/, (0, authors_query_1.findAuthorByBookTitle)(booktitle)];
+            case 1:
+                author = _a.sent();
+                res.json({ author: author });
+                return [3 /*break*/, 3];
+            case 2:
+                error_1 = _a.sent();
+                console.error(error_1);
+                res.status(500).json({ error: 'An error occurred while fetching authors' });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
