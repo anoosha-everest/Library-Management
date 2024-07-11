@@ -40,6 +40,8 @@ var express = require('express');
 var router = express.Router();
 var loans_1 = require("../Models/loans");
 var loans_query_1 = require("../queries/loans_query");
+var connection_1 = require("../config/connection");
+var sequelize = connection_1.connection;
 // Get all loans
 router.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var loan, err_1;
@@ -87,74 +89,108 @@ router.get('/:id', function (req, res) { return __awaiter(void 0, void 0, void 0
 }); });
 // Create a new loan
 router.post('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var loan, err_3;
+    var transaction, loan, err_3;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0:
-                _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, loans_1.loans.create(req.body)];
+            case 0: return [4 /*yield*/, sequelize.transaction()];
             case 1:
-                loan = _a.sent();
-                res.json(loan);
-                return [3 /*break*/, 3];
+                transaction = _a.sent();
+                _a.label = 2;
             case 2:
+                _a.trys.push([2, 5, , 7]);
+                return [4 /*yield*/, loans_1.loans.create(req.body, { transaction: transaction })];
+            case 3:
+                loan = _a.sent();
+                return [4 /*yield*/, transaction.commit()];
+            case 4:
+                _a.sent();
+                res.json(loan);
+                return [3 /*break*/, 7];
+            case 5:
                 err_3 = _a.sent();
+                return [4 /*yield*/, transaction.rollback()];
+            case 6:
+                _a.sent();
                 res.status(500).json({ message: err_3.message });
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
+                return [3 /*break*/, 7];
+            case 7: return [2 /*return*/];
         }
     });
 }); });
 // Update a loan
 router.put('/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var updated, updatedloan, err_4;
+    var transaction, updated, updatedloan, err_4;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0:
-                _a.trys.push([0, 5, , 6]);
-                return [4 /*yield*/, loans_1.loans.update(req.body, { where: { id: req.params.id } })];
+            case 0: return [4 /*yield*/, sequelize.transaction()];
             case 1:
-                updated = (_a.sent())[0];
-                if (!updated) return [3 /*break*/, 3];
-                return [4 /*yield*/, loans_1.loans.findByPk(req.params.id)];
+                transaction = _a.sent();
+                _a.label = 2;
             case 2:
-                updatedloan = _a.sent();
-                res.json(updatedloan);
-                return [3 /*break*/, 4];
+                _a.trys.push([2, 9, , 11]);
+                return [4 /*yield*/, loans_1.loans.update(req.body, { where: { id: req.params.id }, transaction: transaction })];
             case 3:
-                res.status(404).json({ message: "loans Not Found" });
-                _a.label = 4;
-            case 4: return [3 /*break*/, 6];
+                updated = (_a.sent())[0];
+                if (!updated) return [3 /*break*/, 6];
+                return [4 /*yield*/, loans_1.loans.findByPk(req.params.id, { transaction: transaction })];
+            case 4:
+                updatedloan = _a.sent();
+                return [4 /*yield*/, transaction.commit()];
             case 5:
+                _a.sent();
+                res.json(updatedloan);
+                return [3 /*break*/, 8];
+            case 6: return [4 /*yield*/, transaction.rollback()];
+            case 7:
+                _a.sent();
+                res.status(404).json({ message: "loans Not Found" });
+                _a.label = 8;
+            case 8: return [3 /*break*/, 11];
+            case 9:
                 err_4 = _a.sent();
+                return [4 /*yield*/, transaction.rollback()];
+            case 10:
+                _a.sent();
                 res.status(500).json({ message: err_4.message });
-                return [3 /*break*/, 6];
-            case 6: return [2 /*return*/];
+                return [3 /*break*/, 11];
+            case 11: return [2 /*return*/];
         }
     });
 }); });
 // Delete a loan
 router.delete('/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var deleted, err_5;
+    var transaction, deleted, err_5;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0:
-                _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, loans_1.loans.destroy({ where: { id: req.params.id } })];
+            case 0: return [4 /*yield*/, sequelize.transaction()];
             case 1:
-                deleted = _a.sent();
-                if (deleted) {
-                    res.json({ message: "loans Deleted" });
-                }
-                else {
-                    res.status(404).json({ message: "loans Not Found" });
-                }
-                return [3 /*break*/, 3];
+                transaction = _a.sent();
+                _a.label = 2;
             case 2:
+                _a.trys.push([2, 8, , 10]);
+                return [4 /*yield*/, loans_1.loans.destroy({ where: { id: req.params.id }, transaction: transaction })];
+            case 3:
+                deleted = _a.sent();
+                if (!deleted) return [3 /*break*/, 5];
+                return [4 /*yield*/, transaction.commit()];
+            case 4:
+                _a.sent();
+                res.json({ message: "loans Deleted" });
+                return [3 /*break*/, 7];
+            case 5: return [4 /*yield*/, transaction.rollback()];
+            case 6:
+                _a.sent();
+                res.status(404).json({ message: "loans Not Found" });
+                _a.label = 7;
+            case 7: return [3 /*break*/, 10];
+            case 8:
                 err_5 = _a.sent();
+                return [4 /*yield*/, transaction.rollback()];
+            case 9:
+                _a.sent();
                 res.status(500).json({ message: err_5.message });
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
+                return [3 /*break*/, 10];
+            case 10: return [2 /*return*/];
         }
     });
 }); });

@@ -2,6 +2,8 @@ const express=require('express');
 const router=express.Router();
 import {loans} from '../Models/loans';
 import query from '../queries/loans_query';
+import { connection } from '../config/connection';
+const sequelize=connection;
 
 // Get all loans
 router.get('/', async (req, res) => {
@@ -28,38 +30,50 @@ router.get('/:id', async (req, res) => {
 
 // Create a new loan
 router.post('/', async (req, res) => {
+    const transaction = await sequelize.transaction();
     try {
-        const loan = await loans.create(req.body);
+        const loan = await loans.create(req.body, { transaction });
+        await transaction.commit();
         res.json(loan);
     } catch (err) {
+        await transaction.rollback();
         res.status(500).json({message: err.message});
     }
+    
 });
 
 // Update a loan
 router.put('/:id', async (req, res) => {
+    const transaction = await sequelize.transaction();
     try {
-        const [updated] = await loans.update(req.body, {where: {id: req.params.id}});
+        const [updated] = await loans.update(req.body, {where: {id: req.params.id},transaction});
         if (updated) {
-            const updatedloan = await loans.findByPk(req.params.id);
+            const updatedloan = await loans.findByPk(req.params.id, { transaction });
+            await transaction.commit();
             res.json(updatedloan);
         } else {
+            await transaction.rollback();
             res.status(404).json({ message: "loans Not Found" });
         }
     } catch (err) {
+        await transaction.rollback();
         res.status(500).json({message: err.message});
     }
 });
 // Delete a loan
 router.delete('/:id', async (req, res) => {
+    const transaction = await sequelize.transaction();
     try {
-        const deleted = await loans.destroy({where: {id: req.params.id}});
+        const deleted = await loans.destroy({where: {id: req.params.id},transaction});
         if (deleted) {
+            await transaction.commit();
             res.json({ message: "loans Deleted" });
         } else {
+            await transaction.rollback();
             res.status(404).json({ message: "loans Not Found" });
         }
     } catch (err) {
+        await transaction.rollback();
         res.status(500).json({message: err.message});
     }
 });
