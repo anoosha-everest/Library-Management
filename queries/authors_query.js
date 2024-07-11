@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findAuthorByBookTitle = void 0;
+exports.findAuthors = exports.findAuthorByBookTitle = void 0;
 var books_1 = require("../Models/books");
 var authors_1 = require("../Models/authors");
 function findBookTitlesByAuthor(authorId) {
@@ -88,4 +88,59 @@ function findAuthorByBookTitle(title) {
     });
 }
 exports.findAuthorByBookTitle = findAuthorByBookTitle;
+// export async function findAuthors() {
+//   try {
+//       const authorsByNationality = await authors.findAll({
+//           attributes: ['name', 'nationality'],
+//           order: [['name', 'ASC']]
+//       });
+//       const nationalityCounts = await authors.findAll({
+//           attributes: [
+//               'nationality',
+//               [Sequelize.fn('COUNT', Sequelize.col('name')), 'authorCount']
+//           ],
+//           group: ['nationality'],
+//           order: [['nationality', 'ASC']]
+//       });
+//       return {
+//           authorsByNationality,
+//           nationalityCounts
+//       };
+//   } catch (error) {
+//       console.error("Error finding authors with details:", error);
+//       return null;
+//   }
+// }
+function findAuthors() {
+    return __awaiter(this, void 0, void 0, function () {
+        var auth, groupedByNationality, error_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, authors_1.authors.findAll({
+                            attributes: ['name', 'nationality'],
+                            order: [['name', 'ASC']]
+                        })];
+                case 1:
+                    auth = _a.sent();
+                    groupedByNationality = auth.reduce(function (acc, author) {
+                        var nationality = author.nationality;
+                        if (!acc[nationality]) {
+                            acc[nationality] = [];
+                        }
+                        acc[nationality].push(author);
+                        return acc;
+                    }, {});
+                    return [2 /*return*/, groupedByNationality];
+                case 2:
+                    error_1 = _a.sent();
+                    console.error("Error finding authors:", error_1);
+                    return [2 /*return*/, null];
+                case 3: return [2 /*return*/];
+            }
+        });
+    });
+}
+exports.findAuthors = findAuthors;
 exports.default = findBookTitlesByAuthor;

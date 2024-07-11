@@ -60,7 +60,7 @@ async function createTableAuthor () {
 async function syncDatabaseAndInsertData() {
     try {
         
-        await sequelize.sync({ force: true });
+        await sequelize.sync({alter:true });
         console.log('Database synchronized');
         await createTableAuthor();
         await associate();

@@ -72,7 +72,7 @@ function findBooksReserved() {
         var cnt;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, reservations_1.reservations.aggregate('book_id', 'count', { distinct: false })];
+                case 0: return [4 /*yield*/, reservations_1.reservations.aggregate('book_id', 'count', { distinct: true })];
                 case 1:
                     cnt = _a.sent();
                     return [2 /*return*/, cnt];

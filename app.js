@@ -117,7 +117,7 @@ function syncDatabaseAndInsertData() {
             switch (_b.label) {
                 case 0:
                     _b.trys.push([0, 13, , 14]);
-                    return [4 /*yield*/, sequelize.sync({ force: true })];
+                    return [4 /*yield*/, sequelize.sync({ alter: true })];
                 case 1:
                     _b.sent();
                     console.log('Database synchronized');

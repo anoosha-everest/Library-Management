@@ -1,7 +1,7 @@
 const express=require('express');
 const router=express.Router();
 import {authors} from '../Models/authors';
-import query from '../queries/authors_query';
+import query,{findAuthors} from '../queries/authors_query';
 
 // Get all authors
 router.get('/', async (req, res) => {
@@ -82,5 +82,16 @@ router.get('/:authorId/books', async (req, res) => {
         res.status(500).json({ error: 'An error occurred while fetching book titles' });
       }
 });
+
+//get all authors group by nationality and order by name
+router.get('/grouping/ordering',async(req,res)=>{
+    try {
+        const auth = await findAuthors();
+        res.json({ auth });
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'An error occurred while fetching authors' });
+      }
+})
 
 export default router;

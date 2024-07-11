@@ -183,4 +183,25 @@ router.get('/:authorId/books', function (req, res) { return __awaiter(void 0, vo
         }
     });
 }); });
+//get all authors group by nationality and order by name
+router.get('/grouping/ordering', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var auth, error_2;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, (0, authors_query_1.findAuthors)()];
+            case 1:
+                auth = _a.sent();
+                res.json({ auth: auth });
+                return [3 /*break*/, 3];
+            case 2:
+                error_2 = _a.sent();
+                console.error(error_2);
+                res.status(500).json({ error: 'An error occurred while fetching authors' });
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
 exports.default = router;
